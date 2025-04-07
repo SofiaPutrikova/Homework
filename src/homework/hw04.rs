@@ -1,24 +1,30 @@
-fn main() {
-    const HEIGHT: usize = 6;
-    const WIDTH: usize = HEIGHT * 2 - 1;
+const W: u32 = 11; // ширина
+const H: u32 = 11; // висота
 
-    let mut lines = Vec::new();
+fn diamond(w: u32, h: u32) {
+    let mut result = String::new();
+    let mid = h as i32 / 2;
 
-    for i in 0..HEIGHT {
-        let stars = 2 * i + 1;
-        let spaces = (WIDTH - stars) / 2;
-        let line = " ".repeat(spaces) + &"*".repeat(stars);
-        lines.push(line);
+    for y in 0..h as i32 {
+        let dy = (mid - y).abs();
+        let stars = w as i32 - 2 * dy;
+        let spaces = (w as i32 - stars) / 2;
+
+        for _ in 0..spaces {
+            result.push(' ');
+        }
+        for _ in 0..stars {
+            result.push('*');
+        }
+        result.push('\n');
     }
 
-    for i in (0..HEIGHT - 1).rev() {
-        let stars = 2 * i + 1;
-        let spaces = (WIDTH - stars) / 2;
-        let line = " ".repeat(spaces) + &"*".repeat(stars);
-        lines.push(line);
-    }
-
-    print!("{}", lines.join("\n"));
-    println!();
+    print!("{result}");
 }
+
+#[test]
+fn test_diamond() {
+    diamond(W, H);
+}
+
 
