@@ -1,19 +1,27 @@
-fn draw_tree(levels: usize) {
-    let max_width = 2 * levels + 1;
+fn tree(levels: u32) {
+    let total_height: u32 = (1..=levels).sum(); // загальна висота ялинки
+    let max_width: u32 = 1 + 2 * (total_height - 1); // ширина останнього рядка
 
-    for i in 0..levels {
-        let height = i + 1;
+    let mut current_line = 0;
 
-        for row in 0..height {
-            let stars = 2 * row + 1;
-            let spaces = (max_width - stars) / 2;
+    for level in 1..=levels {
+        for row in 0..level {
+            let stars = 1 + 2 * row;
+            let spaces = ((max_width - stars) / 2) as usize;
+            let stars = stars as usize;
 
-            println!("{}{}", " ".repeat(spaces), "*".repeat(stars));
+            let line: String = std::iter::repeat(' ')
+                .take(spaces)
+                .chain(std::iter::repeat('*').take(stars))
+                .collect();
+
+            println!("{line}");
+            current_line += 1;
         }
     }
 }
 
-fn main() {
-    let triangles = 5; // Кількість трикутників
-    draw_tree(triangles);
+#[test]
+fn test_tree() {
+    tree(6); // кількість трикутників
 }
