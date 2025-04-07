@@ -25,7 +25,7 @@ fn test() {
 
     for ((a, b), exp) in data.iter() {
         let result = gcd(*a, *b);
-        println!("gcd({}, {}) = {}", a, b, result);
         assert_eq!(*exp, result);
+        println!("gcd({}, {}) = {}", a, b, result);
     }
 }
