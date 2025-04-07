@@ -30,4 +30,3 @@ fn test_is_prime() {
         println!("is_prime({}) = {}", n, is_prime(n));
     });
 }
-
