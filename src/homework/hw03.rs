@@ -19,7 +19,7 @@ fn test_double() {
     let a: f64 = 0.1;
     let b: f64 = 0.2;
     let x: f64 = a + b;
-    println!("{a} + {b} = {x}"); // 0.1 + 0.2 = 0.30000000000000004
+    println!("{a} + {b} = {x}");
 }
 
 #[test]
